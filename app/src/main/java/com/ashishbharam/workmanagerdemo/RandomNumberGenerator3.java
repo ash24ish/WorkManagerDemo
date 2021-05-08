@@ -9,14 +9,14 @@ import androidx.work.WorkerParameters;
 
 import java.util.Random;
 
-public class RandomNumberGenerator extends Worker {
+public class RandomNumberGenerator3 extends Worker {
 
     private int mRandomNumber;
     private boolean isRandomNumberGeneratorOn;
     Context context;
     WorkerParameters workerParameters;
 
-    public RandomNumberGenerator(@NonNull @org.jetbrains.annotations.NotNull Context context, @NonNull @org.jetbrains.annotations.NotNull WorkerParameters workerParams) {
+    public RandomNumberGenerator3(@NonNull @org.jetbrains.annotations.NotNull Context context, @NonNull @org.jetbrains.annotations.NotNull WorkerParameters workerParams) {
         super(context, workerParams);
         this.context = context;
         this.workerParameters = workerParams;
@@ -30,12 +30,12 @@ public class RandomNumberGenerator extends Worker {
                 Thread.sleep(1000);
                 if (isRandomNumberGeneratorOn){
                     mRandomNumber = new Random().nextInt(999)+99;
-                    Log.i("TAG", "Worker1: Thread: "+Thread.currentThread().getId()+" Random Number: "+mRandomNumber);
+                    Log.i("TAG", "Worker3: Thread: "+Thread.currentThread().getId()+" Random Number: "+mRandomNumber);
                     i++;
                 }
             } catch (InterruptedException e) {
                 e.printStackTrace();
-                Log.i("TAG", "Worker1: Thread interrupted ");
+                Log.i("TAG", "Worker3: Thread interrupted ");
             }
         }
     }
@@ -43,7 +43,7 @@ public class RandomNumberGenerator extends Worker {
     @Override
     public void onStopped() {
         super.onStopped();
-        Log.i("TAG", "Worker1: has been cancelled ");
+        Log.i("TAG", "Worker3: has been cancelled ");
     }
 
     @NonNull
